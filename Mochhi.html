@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposal Website</title>
+    <style>
+        /* Basic styling */
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+            background-image: linear-gradient(120deg, #fde2e4, #bde0fe); /* Soft pastel gradient */
+            font-family: 'Courier New', Courier, monospace;
+            color: #5a2a27; /* Soft dark red for romantic text */
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin: 20px;
+            color: #5a2a27;
+        }
+
+        #buttons-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        /* Button styles */
+        .btn {
+            background-color: #f9c2ff; /* Soft pink */
+            border: none;
+            padding: 12px 24px;
+            font-size: 20px;
+            cursor: pointer;
+            color: #5a2a27;
+            border-radius: 8px;
+            transition: 0.3s;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background-color: #e2a9f3; /* Slightly darker pink on hover */
+        }
+
+        #no-btn {
+            position: relative;
+        }
+
+        /* GIF styling */
+        #gif {
+            width: 100px;
+            height: 100px;
+            margin: 0 10px;
+            display: block;
+        }
+
+        /* Mobile view adjustments */
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 20px;
+            }
+            .btn {
+                padding: 10px 20px;
+                font-size: 18px;
+            }
+            #buttons-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1 id="proposal-text">ရွှေဇင် အကိုနဲ့တွဲကြည့်မလား 💖</h1>
+
+    <div id="buttons-container">
+        <button id="yes-btn" class="btn">YES</button>
+        <img id="gif" src="https://media.giphy.com/media/7zGmpJmwUp5lNFudOf/giphy.gif?cid=790b7611qgz19zcim8h8uwzfbguyayl53pqu30vgm62cqrwn&ep=v1_gifs_search&rid=giphy.gif&ct=g" alt="heart gif">
+        <button id="no-btn" class="btn">NO</button>
+    </div>
+
+    <!-- Music Play Button -->
+    <button id="play-music-btn" class="btn" style="background-color: #ffc1cc; color: #5a2a27; margin-top: 20px;">Play Music</button>
+    <audio id="proposal-music" src="https://www.dropbox.com/scl/fi/ejl5or10yf2yot47c9l94/Stephen-Sanchez-Em-Beihold-Until-I-Found-You-Lyrics-mix....mp3?rlkey=mqbto7eypk5cuu86bolm8xm9o&dl=1"></audio>
+
+    <script>
+        const yesBtn = document.getElementById("yes-btn");
+        const noBtn = document.getElementById("no-btn");
+        const proposalText = document.getElementById("proposal-text");
+        const gif = document.getElementById("gif");
+        const playMusicBtn = document.getElementById("play-music-btn");
+        const proposalMusic = document.getElementById("proposal-music");
+
+        // Counter to track clicks on "Yes" button
+        let yesClicks = 0;
+
+        // Moving "No" button function
+        noBtn.addEventListener("mouseover", () => {
+            const x = Math.random() * 200 - 100;
+            const y = Math.random() * 200 - 100;
+            noBtn.style.transform = `translate(${x}px, ${y}px)`;
+        });
+
+        // Click handler for "Yes" button
+        yesBtn.addEventListener("click", () => {
+            yesClicks++;
+
+            if (yesClicks === 1) {
+                // First click
+                proposalText.innerText = "ဟုတ်ပြီဗျာ အကို့တို့က အဝေးမှာဆိုပေမယ့် အကိုက ရွှေဇင်မျက်လုံးမှိတ် စိတ်ချလို့ရတဲ့လူမျိူးပါ";
+                gif.src = "https://media.giphy.com/media/wPnbkEcr2tXiTN0Lmq/giphy.gif?cid=790b7611enobd1rtjbovjexphke0mhzncmo7rn5r9y59y5zg&ep=v1_gifs_search&rid=giphy.gif&ct=g";
+            } else if (yesClicks === 2) {
+                // Second click
+                proposalText.innerText = "အကိုကတော့ ရွှေဇင့်ကို ထိန်းချုပ်ပြီး စိတ်ညစ်စေမယ့် လူမဟုတ်တာကိုတော့ ရွှေဇင်လည်းသိပါတယ်";
+                gif.src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZW5vYmQxcnRqYm92amV4cGhrZTBtaHpuY21vN3JuNXI5eTU5eTV6ZyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/IzXiddo2twMmdmU8Lv/giphy.gif";
+            } else if (yesClicks === 3) {
+                // Third click
+                proposalText.innerText = "ချစ်ပါတယ်ဆိုတဲ့ စကားကိုတော့ အကိုမပြောချင်ဘူး သက်သေပဲပြချင်တယ်";
+                gif.src = "https://media.giphy.com/media/3ohhwnx9iiNmKrrua4/giphy.gif?cid=ecf05e4775gmxbdxhth3fo54h2cuabknhe4l69a2gzgjag88&ep=v1_gifs_search&rid=giphy.gif&ct=g";
+            }
+        });
+
+        // Play Music Button
+        playMusicBtn.addEventListener("click", () => {
+            if (proposalMusic.paused) {
+                proposalMusic.play();
+                playMusicBtn.innerText = "Pause Music";
+            } else {
+                proposalMusic.pause();
+                playMusicBtn.innerText = "Play Music";
+            }
+        });
+    </script>
+
+</body>
+</html>
